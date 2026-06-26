@@ -1246,6 +1246,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   // ── Reduced motion check ────────────────────────
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // ── Lock viewport height so mobile address-bar changes don't cause jumps ──
+  const HERO_VH = window.innerHeight;
+
   // ── Hero entrance (script is at end of body, DOM is ready) ──
   if (!prefersReducedMotion) {
     document.querySelector('.hero-copy')?.classList.add('is-loaded');
@@ -1256,7 +1259,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   const nav = document.getElementById('site-nav');
   function updateNav() {
     const hw       = document.getElementById('hero-wrapper');
-    const pastHero = hw && window.scrollY > (hw.offsetHeight - window.innerHeight);
+    const pastHero = hw && window.scrollY > (hw.offsetHeight - (HERO_VH || window.innerHeight));
 
     if (pastHero) {
       nav.classList.add('nav-hidden');
@@ -1320,6 +1323,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   const revealLine  = document.getElementById('reveal-line');
   const lawnmower   = document.getElementById('lawnmower');
 
+  // Lock hero heights to a fixed px value so mobile address-bar
+  // show/hide (which changes dvh) can't cause mid-scroll layout jumps.
+  const heroSection = document.getElementById('hero');
+  if (heroWrapper) heroWrapper.style.height = (HERO_VH * 2.8) + 'px';
+  if (heroSection) heroSection.style.height = HERO_VH + 'px';
+
   if (!prefersReducedMotion && heroWrapper && lawnAfter) {
     let revealTicking = false;
     let lastScrollY   = window.scrollY;
@@ -1327,7 +1336,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     function computeLawnReveal() {
       const wrapperH  = heroWrapper.offsetHeight;
-      const viewportH = window.innerHeight;
+      const viewportH = HERO_VH; // use fixed value — never changes
       const maxScroll = wrapperH - viewportH;
       const progress  = Math.max(0, Math.min(1, window.scrollY / maxScroll));
       const pct       = Math.round(progress * 100);
