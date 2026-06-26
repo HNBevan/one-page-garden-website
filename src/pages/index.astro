@@ -15,6 +15,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
+  <!-- Lock viewport height before layout so mobile toolbar show/hide can't shift anything -->
+  <script is:inline>
+    document.documentElement.style.setProperty('--hero-wrap-h', (window.innerHeight * 2.8) + 'px');
+  </script>
+
   <!-- Tailwind CDN: config must be set before the CDN script loads -->
   <script is:inline>
     tailwind.config = {
@@ -71,7 +76,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </a>
 
     <!-- Desktop links -->
-    <ul class="hidden md:flex items-center gap-14 text-[15px] font-heading text-stone" style="font-weight:700;">
+    <ul class="hidden lg:flex items-center gap-14 text-[15px] font-heading text-stone" style="font-weight:700;">
       <li><a href="#services" class="hover:text-g-mid transition-colors">Services</a></li>
       <li><a href="#pricing"  class="hover:text-g-mid transition-colors">Pricing</a></li>
       <li><a href="#gallery"  class="hover:text-g-mid transition-colors">Gallery</a></li>
@@ -80,12 +85,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </ul>
 
     <!-- CTA -->
-    <a href="#contact" class="hidden md:inline-flex items-center gap-1.5 bg-black text-white font-heading font-600 text-sm px-5 py-2.5 rounded-full hover:bg-gray-800 active:scale-[0.97] transition-all duration-200">
+    <a href="#contact" class="hidden lg:inline-flex items-center gap-1.5 bg-black text-white font-heading font-600 text-sm px-5 py-2.5 rounded-full hover:bg-gray-800 active:scale-[0.97] transition-all duration-200">
       Request Callback
     </a>
 
     <!-- Mobile hamburger -->
-    <button id="mob-toggle" class="md:hidden w-8 h-8 flex flex-col justify-center gap-[5px] group" aria-label="Open menu">
+    <button id="mob-toggle" class="lg:hidden w-8 h-8 flex flex-col justify-center gap-[5px] group" aria-label="Open menu">
       <span class="h-[2px] bg-g-ink rounded-full transition-all duration-200 group-hover:bg-g-mid"></span>
       <span class="h-[2px] bg-g-ink rounded-full w-3/4 transition-all duration-200 group-hover:bg-g-mid"></span>
       <span class="h-[2px] bg-g-ink rounded-full transition-all duration-200 group-hover:bg-g-mid"></span>
@@ -93,7 +98,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   </nav>
 
   <!-- Mobile drawer -->
-  <div id="mob-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg">
+  <div id="mob-menu" class="hidden lg:hidden bg-white border-t border-gray-100 shadow-lg">
     <ul class="px-6 py-5 flex flex-col gap-4 text-[15px] font-medium text-stone">
       <li><a href="#services" class="mob-link block hover:text-g-mid transition-colors">Services</a></li>
       <li><a href="#pricing"  class="mob-link block hover:text-g-mid transition-colors">Pricing</a></li>
@@ -114,7 +119,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
      Wrapper gives 180dvh of scroll travel while
      the section stays pinned at the top.
 ═══════════════════════════════════════════════ -->
-<div id="hero-wrapper" style="height: 280dvh; position: relative;">
+<div id="hero-wrapper" style="height: var(--hero-wrap-h, 280svh); position: relative;">
 <section id="hero" class="fixed inset-0 overflow-hidden" style="z-index: 5;">
 
   <!-- Base layer: overgrown lawn fills the screen -->
@@ -1329,10 +1334,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   const revealLine  = document.getElementById('reveal-line');
   const lawnmower   = document.getElementById('lawnmower');
 
-  // Lock hero heights to a fixed px value so mobile address-bar
-  // show/hide (which changes dvh) can't cause mid-scroll layout jumps.
-  const heroSection = document.getElementById('hero');
-  if (heroWrapper) heroWrapper.style.height = (HERO_VH * 2.8) + 'px';
 
   if (!prefersReducedMotion && heroWrapper && lawnAfter) {
     let revealTicking = false;
