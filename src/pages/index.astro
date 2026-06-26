@@ -157,7 +157,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       bottom: 0;
       left: 0%;
       width: clamp(300px, 28vw, 420px);
-      transform: translateX(-100%) translateY(18%);
+      transform: translateX(-100%) translateY(12%);
       z-index: 20;
       filter: drop-shadow(0 4px 12px rgba(0,0,0,0.45));
     "
@@ -1235,6 +1235,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     color: white;
     opacity: 1;
   }
+
 </style>
 
 
@@ -1352,8 +1353,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         if (scrollingDown !== facingRight) {
           facingRight = scrollingDown;
           lawnmower.style.transform = scrollingDown
-            ? 'translateX(-100%) translateY(18%)'
-            : 'scaleX(-1) translateY(18%)';
+            ? 'translateX(-100%) translateY(12%)'
+            : 'scaleX(-1) translateY(12%)';
         }
       }
 
@@ -1499,6 +1500,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       el.textContent = el.dataset.target + (el.dataset.suffix || '');
     });
   }
+
 
   // ── Smooth anchor scrolling with offset ─────────
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
