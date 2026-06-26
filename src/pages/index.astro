@@ -1,6 +1,5 @@
 ---
-// Green Edge Garden Care — Ashford, Kent
-// Single-page site for a solo garden maintenance business
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!DOCTYPE html>
@@ -120,7 +119,7 @@
   <!-- Base layer: overgrown lawn fills the screen -->
   <img
     id="lawn-before"
-    src="overgrown-lawn.png"
+    src={`${base}/overgrown-lawn.png`}
     alt="Overgrown lawn before garden maintenance"
     class="absolute inset-0 w-full h-full object-cover object-top"
     loading="eager"
@@ -129,7 +128,7 @@
   <!-- Reveal layer: freshly cut lawn sweeps in left-to-right -->
   <img
     id="lawn-after"
-    src="freshly-cut-lawn.png"
+    src={`${base}/freshly-cut-lawn.png`}
     alt="Freshly cut pristine lawn after garden maintenance"
     class="absolute inset-0 w-full h-full object-cover object-top"
     style="clip-path: inset(0 100% 0 0); will-change: clip-path;"
@@ -149,7 +148,7 @@
   <!-- Lawnmower: rides the cut boundary at the bottom of the hero -->
   <img
     id="lawnmower"
-    src="/lawnmower.png"
+    src={`${base}/lawnmower.png`}
     alt=""
     aria-hidden="true"
     class="absolute pointer-events-none"
@@ -240,7 +239,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16 lg:mb-24 reveal-item">
       <div class="rounded-xl overflow-hidden aspect-[4/3]">
         <img
-          src="/lawn-mowing.jpg"
+          src={`${base}/lawn-mowing.jpg`}
           alt="Professional lawn mowing in Ashford"
           class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
           loading="lazy"
@@ -316,7 +315,7 @@
       </div>
       <div class="order-1 lg:order-2 rounded-xl overflow-hidden aspect-[4/3]">
         <img
-          src="/hedge-trimming.jpg"
+          src={`${base}/hedge-trimming.jpg`}
           alt="Hedge trimming service in Kent"
           class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
           loading="lazy"
@@ -343,7 +342,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16 lg:mb-24 reveal-item">
       <div class="rounded-xl overflow-hidden aspect-[4/3]">
         <img
-          src="/garden-clearance.jpg"
+          src={`${base}/garden-clearance.jpg`}
           alt="Garden clearance service in Ashford"
           class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
           loading="lazy"
@@ -419,7 +418,7 @@
       </div>
       <div class="order-1 lg:order-2 rounded-xl overflow-hidden aspect-[4/3]">
         <img
-          src="/border-maintenance.jpg"
+          src={`${base}/border-maintenance.jpg`}
           alt="Border maintenance and weeding in Kent"
           class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
           loading="lazy"
@@ -552,7 +551,7 @@
       <!-- Pair 1 -->
       <div class="reveal-item">
         <div class="rounded-xl overflow-hidden aspect-[3/2] mb-2.5">
-          <img src="/before-garden-clearance.png" alt="Overgrown garden before clearance" class="w-full h-full object-cover" loading="lazy" />
+          <img src={`${base}/before-garden-clearance.png`} alt="Overgrown garden before clearance" class="w-full h-full object-cover" loading="lazy" />
         </div>
         <p class="text-xs font-heading font-600 uppercase tracking-widest text-stone/60 mb-1">Before</p>
         <p class="text-sm font-body text-stone">Kingsnorth - rear garden, full clearance needed</p>
@@ -560,7 +559,7 @@
 
       <div class="reveal-item">
         <div class="rounded-xl overflow-hidden aspect-[3/2] mb-2.5 ring-2 ring-g-bright/40">
-          <img src="/after-garden-clearance.png" alt="Garden after full clearance" class="w-full h-full object-cover" loading="lazy" />
+          <img src={`${base}/after-garden-clearance.png`} alt="Garden after full clearance" class="w-full h-full object-cover" loading="lazy" />
         </div>
         <p class="text-xs font-heading font-600 uppercase tracking-widest text-g-mid mb-1">After</p>
         <p class="text-sm font-body text-stone">Cleared, levelled, and ready to use</p>
@@ -569,7 +568,7 @@
       <!-- Feature: full-width comparison side-by-side on desktop -->
       <div class="sm:col-span-2 lg:col-span-1 reveal-item">
         <div class="rounded-xl overflow-hidden aspect-[3/2] mb-2.5 relative">
-          <img src="/after-garden-seeding-maintenance.png" alt="Garden after seeding and maintenance" class="w-full h-full object-cover" loading="lazy" />
+          <img src={`${base}/after-garden-seeding-maintenance.png`} alt="Garden after seeding and maintenance" class="w-full h-full object-cover" loading="lazy" />
           <span class="absolute top-3 right-3 bg-g-mid text-white text-xs font-heading font-600 px-2.5 py-1 rounded-full">Kennington</span>
         </div>
         <p class="text-xs font-heading font-600 uppercase tracking-widest text-g-mid mb-1">After</p>
@@ -579,7 +578,7 @@
       <!-- Pair 2 -->
       <div class="reveal-item">
         <div class="rounded-xl overflow-hidden aspect-[3/2] mb-2.5">
-          <img src="/before-conifer-cut.png" alt="Overgrown conifer hedge before trimming" class="w-full h-full object-cover" loading="lazy" />
+          <img src={`${base}/before-conifer-cut.png`} alt="Overgrown conifer hedge before trimming" class="w-full h-full object-cover" loading="lazy" />
         </div>
         <p class="text-xs font-heading font-600 uppercase tracking-widest text-stone/60 mb-1">Before</p>
         <p class="text-sm font-body text-stone">Willesborough - mature conifer hedge, out of shape</p>
@@ -587,7 +586,7 @@
 
       <div class="reveal-item">
         <div class="rounded-xl overflow-hidden aspect-[3/2] mb-2.5 ring-2 ring-g-bright/40">
-          <img src="/after-conifer-cut.png" alt="Conifer hedge after professional trimming" class="w-full h-full object-cover" loading="lazy" />
+          <img src={`${base}/after-conifer-cut.png`} alt="Conifer hedge after professional trimming" class="w-full h-full object-cover" loading="lazy" />
         </div>
         <p class="text-xs font-heading font-600 uppercase tracking-widest text-g-mid mb-1">After</p>
         <p class="text-sm font-body text-stone">Clean lines, reduced height, waste removed</p>
@@ -595,7 +594,7 @@
 
       <div class="reveal-item">
         <div class="rounded-xl overflow-hidden aspect-[3/2] mb-2.5 relative">
-          <img src="/after-garden-maintenance-clean.png" alt="Garden after maintenance and tidy up" class="w-full h-full object-cover" loading="lazy" />
+          <img src={`${base}/after-garden-maintenance-clean.png`} alt="Garden after maintenance and tidy up" class="w-full h-full object-cover" loading="lazy" />
           <span class="absolute top-3 right-3 bg-g-mid text-white text-xs font-heading font-600 px-2.5 py-1 rounded-full">Mersham</span>
         </div>
         <p class="text-xs font-heading font-600 uppercase tracking-widest text-g-mid mb-1">After</p>
@@ -618,7 +617,7 @@
       <!-- Image -->
       <div class="reveal-item rounded-xl overflow-hidden aspect-[4/3]">
         <img
-          src="/about-marty.jpg"
+          src={`${base}/about-marty.jpg`}
           alt="Marty at work in a garden in Ashford"
           class="w-full h-full object-cover"
           loading="lazy"
